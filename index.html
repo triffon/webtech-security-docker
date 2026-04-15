@@ -6,7 +6,7 @@
 
 		<title>Сигурност на уеб приложения</title>
 
-                <meta name="description" content=">Лекция към курса по Уеб технологии на спец. Информационни системи, 2023/24 г.">
+                <meta name="description" content=">Лекция към курса по Уеб технологии на спец. Информационни системи, 2025/26 г.">
 		<meta name="author" content="Трифон Трифонов">
 
 
@@ -25,7 +25,7 @@
 			<div class="slides">
 				<section>
                                         <h1>Сигурност на уеб приложения</h1>
-                                        <h3>Уеб технологии, спец. Информационни системи и Информатика, 2024/25 г.</h>
+                                        <h3>Уеб технологии, спец. Информационни системи, 2025/26 г.</h>
                                         <h4>Тази презентацията е достъпна под лиценза Creative Commons Признание-Некомерсиално-Споделяне на споделеното 4.0 Международен</h4>
                                 </section>
                                 <section>
@@ -125,7 +125,7 @@
                                                         <a href="https://owasp.org/" target="_blank">OWASP</a> е фондация с идеална цел, посветена на подобряване на сигурността на уеб приложения
                                                 </p>
                                                 <p>
-                                                        <a href="https://owasp.org/www-project-top-ten/" target="_blank">OWASP Top 10 Web Application Security Risks</a>
+                                                        <a href="https://owasp.org/Top10/2025/0x00_2025-Introduction/" target="_blank">OWASP Top 10 Web Application Security Risks</a>
                                                 </p>
                                         </section>
                                         <section>
@@ -245,12 +245,29 @@
                                                         <li><strong>Уязвимост:</strong> стандартен компонент с отворен код има известна уязвимост</li>
                                                         <li><strong>Атака:</strong> изпълняване на библиотека от стандартни атаки срещу всички потенциално уязвими компоненти на сайта</li>
                                                         <li><strong>Пример:</strong>
-                                                                <a href="https://www.cve.org/CVERecord?id=CVE-2024-3094">CVE-2024-3094</a>
+                                                                <a href="https://www.cve.org/CVERecord?id=CVE-2025-10894">CVE-2025-10894</a>
                                                                 <blockquote style="font-size: .6em">
-                                                                        Malicious code was discovered in the upstream tarballs of xz, starting with version 5.6.0. Through a series of complex obfuscations, the liblzma build process extracts a prebuilt object file from a disguised test file existing in the source code, resulting in a modified liblzma library that can be used to intercept and modify the data interaction with this library.
+                                                                        Malicious code was inserted into the Nx (build system) package and several related plugins. The tampered package was published to the npm software registry, via a supply-chain attack. Affected versions contain code that scans the file system, collects credentials, and posts them to GitHub as a repo under user's accounts.
                                                                 </blockquote>
                                                         </li>
-                                                        <li><strong>Защита:</strong> внимателно подбиране на компоненти за вграждане (поддържани ли са, от сигурен източник ли са), следене за обновления по сигурността</li>
+                                                        <li><strong>Защита:</strong> внимателно подбиране на компоненти за вграждане (поддържани ли са, от сигурен източник ли са), следене за обновления по сигурността, фиксиране на версии</li>
+                                                </ul>
+                                        </section>
+                                        <section>
+                                                <h2>Сигурност и изкуствен интелект</h2>
+                                                <ul>
+                                                        <li class="fragment">Вече има големи езикови модели (LLMs), които откриват непознати до момента уязвимости и ги екслоатират</li>
+                                                        <li class="fragment"><a href="https://red.anthropic.com/2026/mythos-preview/">Claude Mythos</a>
+                                                                <blockquote style="font-size: .6em">
+                                                                        During our testing, we found that Mythos Preview is capable of identifying and then exploiting zero-day vulnerabilities in <strong>every major operating system and every major web browser</strong> when directed by a user to do so.
+                                                                </blockquote>
+                                                        </li>
+                                                        <li class="fragment">Ами сега? Какво правим?</li>
+                                                        <li class="fragment"><strong>DON'T PANIC!!1!</strong></li>
+                                                        <li class="fragment">Отговорно разкриване (responsible disclosure)</li>
+                                                        <li class="fragment"><a href="https://www.anthropic.com/glasswing/">Project Glasswing</a>
+                                                                <blockquote style="font-size: .6em">partners will receive access to Claude Mythos Preview to find and fix vulnerabilities or weaknesses in their foundational systems</blockquote>
+                                                        </li>
                                                 </ul>
                                         </section>
                                 </section>
@@ -264,7 +281,7 @@
                                                 <p class="fragment"><strong>Предимства:</strong></p>
                                                 <ul>
                                                         <li class="fragment">програми за една хардуерна архитектура върху друга</li>
-                                                        <li class="fragment">копия и "снимки" на състоянието на машината</li>
+                                                        <li class="fragment">копия и „снимки“ на състоянието на машината</li>
                                                         <li class="fragment">изолация</li>
                                                 </ul>
                                                 <p class="fragment"><strong>Недостатъци:</strong></p>
@@ -324,7 +341,7 @@
                                                 <h2>Построяване на образи (images)</h2>
                                                 <p>Образите на контейнерите се описват с последователност от инструкции в Dockerfile</p>
                                                 <pre><code class="language-dockerfile hljs" data-trim>
-                                                                FROM ubuntu:22.04
+                                                                FROM ubuntu:26.04
                                                                 MAINTAINER triffon@fmi.uni-sofia.bg
                                                                 COPY mine_dogecoin.sh /root/
                                                                 RUN useradd -p doge miner
@@ -340,7 +357,7 @@
                                                 <h2>Docker Hub</h2>
                                                 <div class="fragment">Локално сваляне на образ на контейнер:
                                                         <pre><code class="language-bash hljs" data-trim>
-                                                                        docker pull ubuntu:22.04
+                                                                        docker pull ubuntu:26.04
                                                 </code></pre></div>
                                                 <div class="fragment">Списък с локално налични образи:
                                                         <pre><code class="language-bash hljs" data-trim>
